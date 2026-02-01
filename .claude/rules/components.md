@@ -97,6 +97,8 @@
 - TipBox: 팁/경고 박스. tip/warning 변형 (`sections/jjonddeuk/components/TipBox.jsx`)
 - StepCard: 단계별 카드. 번호 + 제목 + 설명 + 선택적 팁/경고 (`sections/jjonddeuk/components/StepCard.jsx`)
 - StorageMethod: 보관법 카드. 냉장/냉동/실온 타입 (`sections/jjonddeuk/components/StorageMethod.jsx`)
+- ZdogCanvas: vanilla Zdog React 19 래퍼. canvas + rAF 루프 관리 (`sections/jjonddeuk/components/ZdogCanvas.jsx`)
+- IngredientIllust: 단일 재료 Zdog 일러스트 카드. 원형 배경 + 3D 일러스트 + 라벨 (`sections/jjonddeuk/components/IngredientIllust.jsx`)
 
 ### Composite 컴포넌트
 
@@ -110,6 +112,7 @@
 - HeroSection: 히어로 섹션. eyebrow → headline → CTA (`sections/jjonddeuk/HeroSection.jsx`)
 - RecipeSection: 레시피 섹션. 개요 → 재료 → 단계 → 보관 (`sections/jjonddeuk/RecipeSection.jsx`)
 - FooterSection: 푸터 섹션 (`sections/jjonddeuk/FooterSection.jsx`)
+- IngredientIllustSection: 재료 탐구생활 섹션. Zdog 5종 재료 일러스트 그리드 (`sections/jjonddeuk/IngredientIllustSection.jsx`)
 
 ### Pages
 

@@ -8,3 +8,5 @@ export { RecipeOverview } from './RecipeOverview';
 export { IngredientChecklist } from './IngredientChecklist';
 export { StepList } from './StepList';
 export { StorageInfo } from './StorageInfo';
+export { ZdogCanvas } from './ZdogCanvas';
+export { IngredientIllust } from './IngredientIllust';

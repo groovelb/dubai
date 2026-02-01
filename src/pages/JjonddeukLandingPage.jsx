@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box';
-import { HeroSection, RecipeSection, FooterSection } from '../sections/jjonddeuk';
+import { HeroSection, RecipeSection, FooterSection, IngredientIllustSection } from '../sections/jjonddeuk';
 import { landingData } from '../data/landingData';
 import { recipeData } from '../data/recipeData';
 
@@ -27,6 +27,7 @@ function JjonddeukLandingPage({
   return (
     <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
       <HeroSection data={heroData} />
+      <IngredientIllustSection />
       <RecipeSection sectionData={recipeSectionData} recipeData={recipeDetailData} />
       <FooterSection data={footerData} />
     </Box>

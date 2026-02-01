@@ -21,7 +21,8 @@
     "pixelarticons": "^1.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.10.0"
+    "react-router-dom": "^7.10.0",
+    "zdog": "^1.1.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.3",
