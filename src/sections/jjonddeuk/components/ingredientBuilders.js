@@ -10,42 +10,24 @@ import Zdog from 'zdog';
 const TAU = Zdog.TAU;
 
 /**
- * 마시멜로우: 통통한 원통 + 반구 양끝
+ * 마시멜로우: 두꺼운 stroke로 통통하고 부드러운 캡슐 형태
+ * 앵커에 X축 틸트를 줘서 Y회전 시 입체감이 보이도록 처리
  */
 function buildMarshmallow(illo) {
-  const anchor = new Zdog.Anchor({ addTo: illo });
+  const anchor = new Zdog.Anchor({
+    addTo: illo,
+    rotate: { x: -TAU / 10 },
+  });
 
-  // 몸통 (원통)
+  // 몸통 (두꺼운 stroke가 둥근 캡슐 형태를 만듦)
   new Zdog.Cylinder({
     addTo: anchor,
-    diameter: 26,
-    length: 22,
-    stroke: false,
+    diameter: 20,
+    length: 16,
+    stroke: 8,
     color: '#FFFFFF',
     frontFace: '#FFF8F0',
-    backface: '#FFF8F0',
-    rotate: { x: TAU / 4 },
-  });
-
-  // 상단 반구
-  new Zdog.Hemisphere({
-    addTo: anchor,
-    diameter: 26,
-    stroke: false,
-    color: '#FFFFFF',
-    backface: '#FFF8F0',
-    translate: { y: -11 },
-    rotate: { x: -TAU / 4 },
-  });
-
-  // 하단 반구
-  new Zdog.Hemisphere({
-    addTo: anchor,
-    diameter: 26,
-    stroke: false,
-    color: '#FFF8F0',
-    backface: '#FFFFFF',
-    translate: { y: 11 },
+    backface: '#F5F0EA',
     rotate: { x: TAU / 4 },
   });
 }

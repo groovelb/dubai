@@ -15,11 +15,12 @@ import { ingredientBuilders } from './ingredientBuilders';
  * @param {string} type - 재료 타입 키 (marshmallow|kadaif|pistachio|chocolate|butter) [Required]
  * @param {string} label - 재료 이름 [Required]
  * @param {string} description - 재료 한 줄 설명 [Optional, 기본값: '']
+ * @param {number} rotateY - 외부에서 제어하는 Y축 회전값 (라디안) [Optional]
  *
  * Example usage:
- * <IngredientIllust type="marshmallow" label="마시멜로우" description="쫀득함 담당" />
+ * <IngredientIllust type="marshmallow" label="마시멜로우" rotateY={0.5} />
  */
-function IngredientIllust({ type, label, description = '' }) {
+function IngredientIllust({ type, label, description = '', rotateY }) {
   const builder = ingredientBuilders[type];
 
   const handleBuildScene = useCallback(
@@ -57,7 +58,7 @@ function IngredientIllust({ type, label, description = '' }) {
           width={120}
           height={120}
           zoom={2}
-          isSpinning
+          rotateY={rotateY}
         />
       </Box>
 
