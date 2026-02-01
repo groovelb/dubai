@@ -3,7 +3,47 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ImageDetailModal } from '../../../components/data/ImageDetailModal';
-import { museAssets } from '../../../data/museMockData';
+
+/** 스토리용 mock 에셋 데이터 */
+const mockAssets = [
+  {
+    id: 'img-1',
+    title: 'Product Photography',
+    type: 'image',
+    format: 'JPEG',
+    resolution: '4000x3000',
+    size: '8.5 MB',
+    thumbnail: 'https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Product', 'Minimal', 'White'],
+    license: 'Commercial',
+    status: 'approved',
+  },
+  {
+    id: 'vid-1',
+    title: 'Motion Graphics Loop',
+    type: 'video',
+    format: 'MP4',
+    resolution: '1920x1080',
+    duration: '00:15',
+    size: '45 MB',
+    thumbnail: 'https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Motion', 'Abstract', 'Loop'],
+    license: 'Commercial',
+    status: 'approved',
+  },
+  {
+    id: 'img-2',
+    title: 'Pending Review Asset',
+    type: 'image',
+    format: 'PNG',
+    resolution: '2400x1600',
+    size: '12 MB',
+    thumbnail: 'https://images.pexels.com/photos/3131971/pexels-photo-3131971.jpeg?auto=compress&cs=tinysrgb&w=600',
+    tags: ['Neon', 'City', 'Night'],
+    license: 'Internal Only',
+    status: 'pending',
+  },
+];
 
 export default {
   title: 'Custom Component/Overlay/ImageDetailModal',
@@ -44,7 +84,7 @@ export const ImageDetailModalDefault = {
         <ImageDetailModal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          asset={museAssets[0]}
+          asset={mockAssets[0]}
           isLiked={isLiked}
           onLike={() => setIsLiked(!isLiked)}
           onDownload={() => console.log('Download')}
@@ -71,11 +111,11 @@ export const ImageDetailModalWithNavigation = {
     };
 
     const handleNext = () => {
-      setCurrentIndex((prev) => Math.min(museAssets.length - 1, prev + 1));
+      setCurrentIndex((prev) => Math.min(mockAssets.length - 1, prev + 1));
     };
 
     const handleLike = () => {
-      const assetId = museAssets[currentIndex].id;
+      const assetId = mockAssets[currentIndex].id;
       setLikedIds((prev) =>
         prev.includes(assetId)
           ? prev.filter((id) => id !== assetId)
@@ -89,7 +129,7 @@ export const ImageDetailModalWithNavigation = {
           Click any image to open the detail modal with navigation
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-          {museAssets.map((asset, index) => (
+          {mockAssets.map((asset, index) => (
             <Box
               key={asset.id}
               onClick={() => {
@@ -122,17 +162,17 @@ export const ImageDetailModalWithNavigation = {
         <ImageDetailModal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-          asset={museAssets[currentIndex]}
-          isLiked={likedIds.includes(museAssets[currentIndex]?.id)}
+          asset={mockAssets[currentIndex]}
+          isLiked={likedIds.includes(mockAssets[currentIndex]?.id)}
           onLike={handleLike}
-          onDownload={() => console.log('Download:', museAssets[currentIndex]?.title)}
-          onShare={() => console.log('Share:', museAssets[currentIndex]?.title)}
-          onEdit={() => console.log('Edit:', museAssets[currentIndex]?.title)}
-          onAddToBoard={() => console.log('Add to board:', museAssets[currentIndex]?.title)}
+          onDownload={() => console.log('Download:', mockAssets[currentIndex]?.title)}
+          onShare={() => console.log('Share:', mockAssets[currentIndex]?.title)}
+          onEdit={() => console.log('Edit:', mockAssets[currentIndex]?.title)}
+          onAddToBoard={() => console.log('Add to board:', mockAssets[currentIndex]?.title)}
           onPrevious={handlePrevious}
           onNext={handleNext}
           hasPrevious={currentIndex > 0}
-          hasNext={currentIndex < museAssets.length - 1}
+          hasNext={currentIndex < mockAssets.length - 1}
         />
       </Box>
     );
@@ -146,53 +186,13 @@ export const ImageDetailModalAssetTypes = {
   render: () => {
     const [openAsset, setOpenAsset] = useState(null);
 
-    const assets = [
-      {
-        id: 'img-1',
-        title: 'Product Photography',
-        type: 'image',
-        format: 'JPEG',
-        resolution: '4000x3000',
-        size: '8.5 MB',
-        thumbnail: 'https://images.pexels.com/photos/3945659/pexels-photo-3945659.jpeg?auto=compress&cs=tinysrgb&w=600',
-        tags: ['Product', 'Minimal', 'White'],
-        license: 'Commercial',
-        status: 'approved',
-      },
-      {
-        id: 'vid-1',
-        title: 'Motion Graphics Loop',
-        type: 'video',
-        format: 'MP4',
-        resolution: '1920x1080',
-        duration: '00:15',
-        size: '45 MB',
-        thumbnail: 'https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=600',
-        tags: ['Motion', 'Abstract', 'Loop'],
-        license: 'Commercial',
-        status: 'approved',
-      },
-      {
-        id: 'img-2',
-        title: 'Pending Review Asset',
-        type: 'image',
-        format: 'PNG',
-        resolution: '2400x1600',
-        size: '12 MB',
-        thumbnail: 'https://images.pexels.com/photos/3131971/pexels-photo-3131971.jpeg?auto=compress&cs=tinysrgb&w=600',
-        tags: ['Neon', 'City', 'Night'],
-        license: 'Internal Only',
-        status: 'pending',
-      },
-    ];
-
     return (
       <Box>
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           Different asset types: Image, Video, Pending status
         </Typography>
         <Box sx={{ display: 'flex', gap: 2 }}>
-          {assets.map((asset) => (
+          {mockAssets.map((asset) => (
             <Button
               key={asset.id}
               variant="outlined"
